@@ -1,0 +1,3 @@
+﻿<!-- <h1 [ngStyle]="{ backgroundColor: getColor() }" [ngClass]="'online'">Server is {{ status }}</h1> -->
+<!-- <h1 [ngStyle]="{ backgroundColor: getColor() }" [ngClass]="['online', 'offline']">Server is {{ status }}</h1> -->
+<h1 [ngStyle]="{ backgroundColor: getColor() }" [ngClass]="{ offline: status !== 'online' }">Server is {{ status }}</h1>

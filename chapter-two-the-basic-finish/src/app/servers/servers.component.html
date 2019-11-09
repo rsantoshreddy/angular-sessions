@@ -1,0 +1,18 @@
+<!-- String interpolation {{data}}-->
+<h1>{{ title }}</h1>
+<label for="server-name">Server Name</label>
+<!-- Property binding [property]="data"-->
+<!-- Event binding (event)="expression"-->
+<input id="server-name" class="form-control" type="text" (input)="onServerNameChange($event)" />
+<!-- Two way data binding -->
+<input id="server-name" class="form-control" type="text" [(ngModel)]="serverName" />
+<!-- <p>{{ serverName }}</p> -->
+<p *ngIf="serverCreated; else noServer">{{ serverName }}</p>
+
+<ng-template #noServer>
+  <p>No server is created</p>
+</ng-template>
+<button class="btn btn-primary" [disabled]="disableServer" (click)="onServerCreate($event)">Create Server</button>
+<!-- <app-server></app-server>
+<app-server></app-server> -->
+<app-server *ngFor="let server of servers; let i = index"></app-server>

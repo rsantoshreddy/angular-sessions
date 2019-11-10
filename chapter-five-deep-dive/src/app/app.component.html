@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <p>Add new server or blue prints</p>
+      <app-header-form (srvOut)="addServer($event)" (bprtOut)="addBluePrint($event)"></app-header-form>
+    </div>
+  </div>
+  <!-- <p >{{ name }}</p> -->
+  <!-- <p [innerText]="name"></p> -->
+  <!-- <button (click)="addServer()">Submit</button> -->
+  <br />
+  <div class="row">
+    <div class="col-xs-12">
+      <app-list *ngFor="let element of serverElements" [serverElement]="element"></app-list>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="toggleNumbers()">
+        Toggle odd and even
+      </button>
+      <br /><br />
+      <div class="list-group">
+        <ul *ngIf="onlyOdd">
+          <li
+            *ngFor="let number of oddNumbers"
+            class="list-group-item"
+            [ngClass]="{ odd: number % 2 !== 0 }"
+            [ngStyle]="{ backgroundColor: number % 2 !== 0 ? 'green' : 'yellow' }"
+          >
+            {{ number }}
+          </li>
+        </ul>
+        <!-- <ul *ngIf="!onlyOdd">
+          <li
+            *ngFor="let number of evenNumbers"
+            class="list-group-item"
+            [ngClass]="{ even: number % 2 === 0 }"
+            [ngStyle]="{ backgroundColor: number % 2 !== 0 ? 'green' : 'yellow' }"
+          >
+            {{ number }}
+          </li>
+        </ul>
+
+        <ng-template [ngIf]="!onlyOdd">
+          <ul *ngIf="!onlyOdd">
+            <li
+              *ngFor="let number of evenNumbers"
+              class="list-group-item"
+              [ngClass]="{ even: number % 2 === 0 }"
+              [ngStyle]="{ backgroundColor: number % 2 !== 0 ? 'green' : 'yellow' }"
+            >
+              {{ number }}
+            </li>
+          </ul>
+        </ng-template> -->
+
+        <ul *appUnless="onlyOdd">
+          <li
+            *ngFor="let number of evenNumbers"
+            class="list-group-item"
+            [ngClass]="{ even: number % 2 === 0 }"
+            [ngStyle]="{ backgroundColor: number % 2 !== 0 ? 'green' : 'yellow' }"
+          >
+            {{ number }}
+          </li>
+        </ul>
+      </div>
+      <p appBasicHighlight>Some text</p>
+      <p appBetterHighlight>Some text</p>
+      <p appBestHightlight>Some text</p>
+      <p appPassingValues [defaultColor]="'cyan'" [hightColor]="'blueviolet'">Some text</p>
+      <p appPassingValues defaultColor="cyan" hightColor="blueviolet">Some text</p>
+      <!-- <p defaultColor="cyan" [appPassingValues]="'blueviolet'">Some text</p> -->
+    </div>
+  </div>
+</div>

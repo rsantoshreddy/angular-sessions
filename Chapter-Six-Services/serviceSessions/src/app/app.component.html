@@ -1,14 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <app-new-user (userAdded)="onUserAdded($event)"></app-new-user>
+      <app-new-user></app-new-user>
       <hr />
-      <app-user
-        *ngFor="let user of users; let i = index"
-        [user]="user"
-        [id]="i"
-        (statusUpdated)="onUserStatusUpdate($event)"
-      ></app-user>
+      <h1>Users</h1>
+      <app-user *ngFor="let user of users; let i = index" [user]="user" [id]="i"></app-user>
     </div>
   </div>
 </div>

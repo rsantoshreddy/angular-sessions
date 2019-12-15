@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import UserService from '../services/user.service';
 
 @Component({
   selector: 'app-new-user',
@@ -6,12 +7,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./new-user.component.css']
 })
 export class NewUserComponent implements OnInit {
-  @Output() userAdded = new EventEmitter<{ name: string; age: number; status: string }>();
-  constructor() {}
-
-  ngOnInit() {}
+  constructor(private userService: UserService) {}
+  ngOnInit() {
+    this.userService.userStatusUpdated.subscribe(status => {
+      console.log(status);
+    });
+  }
 
   onUserAdded(name, age, status) {
-    this.userAdded.emit({ name, age, status });
+    this.userService.addUser({ name, age, status });
   }
 }
